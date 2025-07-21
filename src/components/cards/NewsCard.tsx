@@ -18,7 +18,7 @@ type Props = {
 
 export default function NewsCard({ article }: Props) {
   const dispatch = useDispatch();
-  const favorites = useSelector((state: RootState) => state.favorites.items);
+  const favorites = useSelector((state: RootState) => state.favorites.articles);
   const isFav = favorites.some((item) => item.url === article.url);
 
   const handleClick = () => {

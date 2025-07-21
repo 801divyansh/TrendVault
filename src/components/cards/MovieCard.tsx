@@ -1,3 +1,4 @@
+// src/components/cards/MovieCard.tsx
 "use client";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -5,9 +6,9 @@ import { addFavoriteMovie, removeFavoriteMovie } from "@/store/slices/favoritesS
 import { RootState } from "@/store";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { Movie } from "@/types";
 
-export default function MovieCard({ movie }: { movie: any }) {
+export default function MovieCard({ movie }: { movie: Movie }) {
   const dispatch = useDispatch();
   const isFavorite = useSelector((state: RootState) =>
     state.favorites.movies.some((fav) => fav.id === movie.id)
@@ -37,8 +38,12 @@ export default function MovieCard({ movie }: { movie: any }) {
         <p className="text-sm text-muted-foreground line-clamp-3">{movie.overview}</p>
         <div className="flex justify-between items-center pt-2">
           <span className="text-sm text-yellow-500">⭐ {movie.vote_average}</span>
-          <Button size="sm" onClick={toggleFavorite} variant={isFavorite ? "secondary" : "outline"}>
-            {isFavorite ? "💔 Remove" : "❤️ Favorite"}
+          <Button
+            size="sm"
+            onClick={toggleFavorite}
+            variant={isFavorite ? "secondary" : "outline"}
+          >
+            {isFavorite ? "Remove" : "❤️ Favorite"}
           </Button>
         </div>
       </CardContent>

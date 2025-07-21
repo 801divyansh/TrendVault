@@ -4,22 +4,22 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchNewsByCategory } from "@/features/news/newsSlice";
-import { RootState } from "@/store";
+import { RootState, AppDispatch } from "@/store";
 import NewsCard from "@/components/cards/NewsCard";
 import CategorySelector from "@/components/shared/CategorySelector";
 
 export default function DashboardPage() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const category = useSelector((state: RootState) => state.preferences.selectedCategory);
   const { articles, loading, error } = useSelector((state: RootState) => state.news);
 
   useEffect(() => {
-    dispatch(fetchNewsByCategory(category) as any);
+    dispatch(fetchNewsByCategory(category));
   }, [dispatch, category]);
 
   return (
     <div className="p-4 space-y-6">
-      <h1 className="text-2xl font-bold">📰 Personalized News</h1>
+      <h1 className="text-2xl font-bold"> Personalized News</h1>
 
       <CategorySelector />
 

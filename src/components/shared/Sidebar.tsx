@@ -6,7 +6,7 @@ import { Home, Star, Settings } from "lucide-react";
 export default function Sidebar() {
   return (
     <aside className="w-64 bg-muted p-4 border-r hidden md:block">
-      <h2 className="text-xl font-bold mb-6">📊 Dashboard</h2>
+      <h2 className="text-xl font-bold mb-6">Dashboard</h2>
       <ul className="space-y-4">
         <li>
           <Link href="/dashboard" className="flex items-center gap-2 hover:text-primary">
